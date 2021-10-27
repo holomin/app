@@ -35,11 +35,11 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void SetAnchorText(ARAnchor anchor, string text)
         {
-            var canvasTextManager = anchor.GetComponent<CanvasTextManager>();
-            if (canvasTextManager)
-            {
-                canvasTextManager.text = text;
-            }
+            // var canvasTextManager = anchor.GetComponent<CanvasTextManager>();
+            // if (canvasTextManager)
+            // {
+            //     canvasTextManager.text = text;
+            // }
         }
 
         ARAnchor CreateAnchor(in ARRaycastHit hit)

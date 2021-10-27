@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114674181514608572}
   - component: {fileID: 114143057649092886}
   m_Layer: 0
-  m_Name: AR Point Cloud Visualizer
+  m_Name: AR Point Cloud Custom Visualizer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
