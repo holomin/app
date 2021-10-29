@@ -35,7 +35,7 @@ namespace QRFoundation
                     module.codeWidth = EditorGUILayout.FloatField(
                         new GUIContent(
                         "Code width",
-                        "The pysical width of the QR code in meters."),
+                        "The physical width of the QR code in meters."),
                         module.codeWidth
                     );
                     break;

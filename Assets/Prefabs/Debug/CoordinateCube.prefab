@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7640371259300002619}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Scale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1749,7 +1749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8884776251331036479}
   m_Layer: 0
-  m_Name: Coords
+  m_Name: CoordinateCube
   m_TagString: Reference
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

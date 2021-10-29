@@ -818,6 +818,7 @@ namespace QRFoundation
                 registeredGameObject = new GameObject();
             }
 
+			registeredGameObject.tag = "Reference"; //CUSTOM CODE
             registeredGameObject.transform.parent = transform.parent;
             registeredGameObject.transform.position = pose.position;
             registeredGameObject.transform.rotation = pose.rotation;
