@@ -438,7 +438,7 @@ MonoBehaviour:
     width: 0.052
   - contains: 
     width: 0.05
-  prefab: {fileID: 0}
+  prefab: {fileID: 8884776251331036478, guid: e0794f9c421ea4c74a3a5802315ad10e, type: 3}
   inversionAttempt: 0
   onCodeDetected:
     m_PersistentCalls:
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Logger: {fileID: 1991142173}
-  DebugObject: {fileID: 1754767520190229868, guid: b85cdf1b746bc4368bfe54fc4b1055d5, type: 3}
+  DebugObject: {fileID: 6149033519491195867, guid: aa8dc9b34f227420fbf2bb2388092090, type: 3}
 --- !u!1 &1032469617
 GameObject:
   m_ObjectHideFlags: 0

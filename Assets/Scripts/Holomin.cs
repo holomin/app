@@ -35,7 +35,7 @@ public class Holomin : MonoBehaviour
 		Log("DETECTED: " + content);
 
 		// Pose = new Pose. //-0.022225f
-		Offset = new Vector3(0, 0, 0);	
+		// Offset = new Vector3(0, 0, 0);	
 	}
 
 	public void OnCodeRegistered(string content, GameObject reference) {
