@@ -5,6 +5,7 @@ using CSQR;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
+//custom
 
 namespace QRFoundation
 {
