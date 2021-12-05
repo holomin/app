@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
 //custom
+// using System.
+
 
 namespace QRFoundation
 {

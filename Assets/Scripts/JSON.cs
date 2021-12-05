@@ -16,17 +16,20 @@ public class JSON {
 	public Layout layout;
 }
 
+[Serializable]
 public class Layout {
 	public double qrCodeOffset;
 	public double width;
 	public double height;
 }
 
+[Serializable]
 public class Ports {
 	public RJ45 rj45;
 	public SFP sfp;
 }
 
+[Serializable]
 public class RJ45 {
 	public double leftOffset;
 	public double topOffset;
@@ -40,6 +43,7 @@ public class RJ45 {
 
 }
 
+[Serializable]
 public class SFP {
 	public double leftOffset;
 	public double topOffset;

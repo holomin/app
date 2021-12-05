@@ -438,7 +438,7 @@ MonoBehaviour:
     width: 0.052
   - contains: 
     width: 0.05
-  prefab: {fileID: 0}
+  prefab: {fileID: 8884776251331036478, guid: e0794f9c421ea4c74a3a5802315ad10e, type: 3}
   inversionAttempt: 1
   onCodeDetected:
     m_PersistentCalls:
@@ -854,6 +854,10 @@ PrefabInstance:
     - target: {fileID: 7866405778900116744, guid: 43a65bb11b6a14d08a57bd9312ad25b6, type: 3}
       propertyPath: m_Name
       value: TexturedSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866405778900116744, guid: 43a65bb11b6a14d08a57bd9312ad25b6, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7866405778900116744, guid: 43a65bb11b6a14d08a57bd9312ad25b6, type: 3}
       propertyPath: m_TagString
