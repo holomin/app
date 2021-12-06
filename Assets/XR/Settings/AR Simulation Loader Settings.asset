@@ -26,15 +26,15 @@ MonoBehaviour:
   m_inputSettings:
     DeactivateWithSubsystem: 1
     DisableInputWithSelectedUI: 1
-    Mode: 1
+    Mode: 0
     Keys: 1
-    MovementSensitivity: 1.1
-    RotationSensitivity: 1.1
+    MovementSensitivity: 0.1
+    RotationSensitivity: 0.7
     Mouse: 1
     FocusKey: 102
     FocusAt: 1
     DefaultFocusDistance: 1.5
-  m_allowAutoSetupLogging: 0
+  m_allowAutoSetupLogging: 1
   foldoutEnvironmentManagerSettings: 1
   prefabGuidsWithSimulatedEnvironmentComponent: []
   simulatedEnvironmentSettings: []
