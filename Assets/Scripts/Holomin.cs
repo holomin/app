@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 // using UnityEngine.JsonUtility;
 // using UnityEngine.GenerateSwitch;
+
 
 public class Holomin : MonoBehaviour
 {
@@ -33,7 +33,6 @@ public class Holomin : MonoBehaviour
 		Log("DETECTED: " + content);
 
 		//TODO
-		// jsonQR jsondata = JsonUtility.FromJson<jsonQR>(content);
 		//Parse ID from QR Code (Convert to Json)
 		//if localID is not set, set.
 		//Get & Parse JSON Switch Data by using ID
@@ -235,33 +234,7 @@ public class Holomin : MonoBehaviour
 	// 	// json.AddField("id", content);
 	// 	// json.AddField("position", new JSONObject(new Vector3(0, 0, 0)));
 	// }
-	IEnumerator getJsonFromApi(string key) {
-		// https://api.holomin.app/208c1816-1eb3-43c5-beb7-ef936f41b838.json
-		string uri = "https://api.holomin.app/" + key + ".json";
-		
-		using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            // Request and wait for the desired page.
-            yield return webRequest.SendWebRequest();
 
-            string[] pages = uri.Split('/');
-            int page = pages.Length - 1;
-
-            switch (webRequest.result)
-            {
-                case UnityWebRequest.Result.ConnectionError:
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
-                    break;
-                case UnityWebRequest.Result.Success:
-                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                    break;
-            }
-        }
-	}
 	// 
 	// 	// console.Log
 	// 	

@@ -7,7 +7,7 @@ using System;
 // private const double height = 0.04445;
 
 [Serializable] //why is this neccesary?
-public class jsonData {
+public class JSON {
 	public string id;
 	public string brand;
 	public string model;
