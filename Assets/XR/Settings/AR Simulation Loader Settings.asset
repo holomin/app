@@ -28,7 +28,7 @@ MonoBehaviour:
     DisableInputWithSelectedUI: 1
     Mode: 1
     Keys: 1
-    MovementSensitivity: 1.1
+    MovementSensitivity: 0.5
     RotationSensitivity: 1.1
     Mouse: 1
     FocusKey: 102

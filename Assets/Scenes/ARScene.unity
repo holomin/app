@@ -537,7 +537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Logger: {fileID: 1991142173}
-  DebugObject: {fileID: 0}
   MatRJ45: {fileID: 2100000, guid: 2f03cf9166b924032bc7e0a8d0518775, type: 2}
 --- !u!4 &1018084067
 Transform:
@@ -621,9 +620,9 @@ Canvas:
   m_GameObject: {fileID: 1032469617}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 988373254}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

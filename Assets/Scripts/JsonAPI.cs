@@ -7,7 +7,8 @@ using System;
 // private const double height = 0.04445;
 
 [Serializable] //why is this neccesary?
-public class JSON {
+public class JsonAPI
+{
 	public string id;
 	public string brand;
 	public string model;
@@ -17,20 +18,23 @@ public class JSON {
 }
 
 [Serializable]
-public class Layout {
+public class Layout
+{
 	public double qrCodeOffset;
 	public double width;
 	public double height;
 }
 
 [Serializable]
-public class Ports {
+public class Ports
+{
 	public RJ45 rj45;
 	public SFP sfp;
 }
 
 [Serializable]
-public class RJ45 {
+public class RJ45
+{
 	public double leftOffset;
 	public double topOffset;
 	public string speed; //will be converted to array when jsonified
@@ -44,7 +48,8 @@ public class RJ45 {
 }
 
 [Serializable]
-public class SFP {
+public class SFP
+{
 	public double leftOffset;
 	public double topOffset;
 	public string speed; //will be converted to array when jsonified

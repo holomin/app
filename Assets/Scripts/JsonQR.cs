@@ -7,7 +7,9 @@ using System;
 // private const double height = 0.04445;
 
 [Serializable] //why is this neccesary?
-public class QR {
-	public string id;
+public class JsonQR
+{
 	public string app;
+	public string id;
+
 }

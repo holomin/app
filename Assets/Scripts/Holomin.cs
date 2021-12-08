@@ -10,144 +10,134 @@ using UnityEngine.UI;
 
 public class Holomin : MonoBehaviour
 {
-	//variables
-	//debug
 	public Text Logger;
-	public GameObject DebugObject = null;
 	public Material MatRJ45;
-	private string DetectedQRCode;
-	private string RegisteredQRCode;
-	private string SpawnedQRCode;
-
 	private GameObject NetworkSwitch = null; //network switch to ge generated.
 	private bool QRCodeVisible = false;
 	private bool IsSpawned = false;
-	private Vector3 Offset = new Vector3(0f,0f,0f);
 
-	public void OnCodeDetected(string content){
+	//more
+	private string localID = null;
+
+	private string qrContent = null;
+	private string error = null;
+	public void OnCodeDetected(string content)
+	{
+		Log("Starting OnCodeDeteted()");
+		Log(content);
+		QRCodeVisible = true;
+		qrContent = content;
 		//TODO
 		// Show UI change that QR code it there.
 		// Show/Update stability level in Text (debug) color (final)
-		DetectedQRCode = content;
-		QRCodeVisible = true;
-		Log("DETECTED: " + content);
-
 		//TODO
+
+
 		//Parse ID from QR Code (Convert to Json)
 		//if localID is not set, set.
 		//Get & Parse JSON Switch Data by using ID
 		//if localID is set, do nothing.
-		if(NetworkSwitch == null){
+		if (NetworkSwitch == null)
+		{
 			NetworkSwitch = GenerateOverlay(); //generate overlay from JSON data
 		}
 
 		// Pose = new Pose. //-0.022225f
 		// Offset = new Vector3(0, 0, 0);	
+		Log("Ending OnCodeDeteted()");
 	}
 
-	public void OnCodeRegistered(string content, GameObject reference) {
-		//TODO
-		Log("LocalScale: "+reference.transform.localScale.ToString());
-		Log("LossyScale: "+reference.transform.lossyScale.ToString());
-		Log("Position: "+reference.transform.position.ToString());
-		Log("Rotation: "+reference.transform.rotation.ToString());
+	public void OnCodeRegistered(string content, GameObject reference)
+	{
+		Log("Starting OnCodeRegistered()");
 
-		foreach (Transform child in reference.transform)
+		if (IsSpawned == false)
 		{
-			Log(child.ToString());
-		}
-
-		RegisteredQRCode = content;
-		Log("Registered");
-		if(IsSpawned == false){
-			if(DebugObject) {
-				//using debug object
-				NetworkSwitch = Instantiate(DebugObject, reference.transform.position, reference.transform.rotation) as GameObject;
-			} else {
-				//using generate from json
-				NetworkSwitch.transform.SetPositionAndRotation(reference.transform.position, reference.transform.rotation);
-				// NetworkSwitch.transform.position += reference.transform.position; //position includes offset
-				// NetworkSwitch.transform.rotation = reference.transform.rotation; //rotation should be fixed to QR code
-				IsSpawned = true;
-				
-			}
+			NetworkSwitch.transform.SetPositionAndRotation(reference.transform.position, reference.transform.rotation);
+			IsSpawned = true;
 			Log("Spawned");
-		} 
-		// else {
-		// 	NetworkSwitch.transform.SetPositionAndRotation( gameObject.transform.position, gameObject.transform.rotation);
-		// 	Log("UpdatedPositionInRegistered");
-		// }
-		
-		// Log("POSITION: " + gameObject.transform.position.ToString());
-		// Log("ROTATION: " + gameObject.transform.rotation.ToString());
-
-		// if(RegisteredQRCode == SpawnedQRCode){
-		// 	o.transform.position = gameObject.transform.position;
-		// 	o.transform.rotation = gameObject.transform.rotation;
-		// 	Log("LOCATION UPDATED");
-
-		// } else {
-		// 	GameObject o = Instantiate(DebugObject, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-		// 	SpawnedQRCode = content;
-		// 	o.name = "208c";
-		// 	o.tag = "208c";
-		// 	Log("SPHERE SPAWNED");
-		// }
-
-		// if(object with same id exists) {	
-			
-		// else
-			//if(object with different id exists)		
-				//Delete SwitchObjects
-			// 	else
-				//Create SwitchGameObject dependant on String
-				//Spawn switch to the GameObject location
-
-		
+		}
+		Log("Ending OnCodeRegistered()");
 	}
 
-	public void OnCodeLost() {
+	public void OnCodeLost()
+	{
+		Log("Starting OnCodeLost()");
 		QRCodeVisible = false;
-		Log("LOST QR CODE");
-		// Logger.Log("REGISTERED: " + content);
+		Log("Ending OnCodeLost()");
 	}
 
 	//debug thing
-	public void Log(string message) {
+	public void Log(string message)
+	{
 		int numLines = Logger.text.Split('\n').Length;
-		if(numLines > 40){
+		if (numLines > 40)
+		{
 			string temp = Logger.text;
 			for (int i = 40; i < numLines; i++)
 			{
-				temp = System.Text.RegularExpressions.Regex.Replace(Logger.text,"^(.*\n){1}","");
+				temp = System.Text.RegularExpressions.Regex.Replace(Logger.text, "^(.*\n){1}", "");
 			}
 			temp += message;
 			Logger.text = temp;
 			//remove lines until 40. 
-		} else {
+		}
+		else
+		{
 			Logger.text += message + "\r\n";
 		}
 	}
 
 	// Start is called before the first frame update
-    void Start()
-    {
-        Log("Holomin script has started");
-    }
+	void Start()
+	{
+		Log("Starting Start()");
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-		if(QRCodeVisible == true){
-			GameObject reference = GameObject.FindGameObjectWithTag("Reference");
-			if(reference != null){
-				NetworkSwitch.transform.SetPositionAndRotation(reference.transform.position, reference.transform.rotation);
+	// Update is called once per frame
+	void Update()
+	{
+		// ShowError(error);
+
+		if (qrContent != null)
+		{
+			try
+			{
+				localID = JsonUtility.FromJson<JsonQR>(qrContent).id;
+				Log(localID);
+				//show blue border on square
+				// error = null;
+				qrContent = null;
+			}
+			catch (System.Exception)
+			{
+				qrContent = null;
+				Log("This QR Code is not part of the Holomin ecosystem.");
+				// error = "This QR Code is not part of the Holomin ecosystem.";
 			}
 		}
-    }
+		// if (QRCodeVisible == true)
+		// {
+		// 	GameObject reference = GameObject.FindGameObjectWithTag("Reference");
+		// 	if (reference != null)
+		// 	{
+		// 		NetworkSwitch.transform.SetPositionAndRotation(reference.transform.position, reference.transform.rotation);
+		// 	}
+		// }
+	}
 
-	public GameObject GenerateOverlay(string content = "temp") {
-		Vector3 scale1 = new Vector3(1,1,1);
+	public void ShowError(string error)
+	{
+		if (error != null)
+		{
+			Log(error);
+			error = null;
+			//todo: show error visually (red border idk);
+		}
+	}
+	public GameObject GenerateOverlay(string content = "temp")
+	{
+		Vector3 scale1 = new Vector3(1, 1, 1);
 		Vector3 scale2 = new Vector3(0.033f, 0.033f, 0.033f);
 		Vector3 scale3 = new Vector3(0.4826f, 0.04445f, 0.01f); //19" wide, 1U high, 1cm depth
 		Vector3 scale4 = new Vector3(3.0303030303f, 3.0303030303f, 3.0303030303f);
@@ -162,13 +152,13 @@ public class Holomin : MonoBehaviour
 		SetParentChild(PRS, cube);
 
 		ZeroPositionAndRotationParams(localNetworkSwitch, PRS, cube);
-		
+
 		PRS.transform.localScale = scale1;
-		PRS.transform.position = new Vector3(0.2283f,0.005f,0); //-0.1813f
+		PRS.transform.position = new Vector3(0.2283f, 0.005f, 0); //-0.1813f
 
 		// localNetworkSwitch.transform.position = new Vector3(-0.1813f,0,0.0165f);
 		// localNetworkSwitch.transform.rotation = Quaternion.Euler(rotation90);
-		
+
 		// int sections = 2;
 		// int columns = 6;
 		// int rows = 2;
@@ -177,24 +167,27 @@ public class Holomin : MonoBehaviour
 		float offset = 0.20f;
 
 		for (int i = 1; i < 12; i++)
-		{	
+		{
 			GameObject rj45 = GameObject.CreatePrimitive(PrimitiveType.Cube);
 			rj45.name = $"port{i}";
 			rj45.GetComponent<Renderer>().material = MatRJ45; //set mat.
 			rj45.transform.localScale = new Vector3(0.01f, 0f, 0.01f);
 
-			Vector3 rotation0 = new Vector3(0,0,0);
-			Vector3 rotation180 = new Vector3(180,0,0);			
+			Vector3 rotation0 = new Vector3(0, 0, 0);
+			Vector3 rotation180 = new Vector3(180, 0, 0);
 
 			// Vector3 offset = new Vector3(0.01f, 0.01f, 0.1f);
 			SetParentChild(PRS, rj45);
-			rj45.transform.position = new Vector3(x+offset, 0.015f, y);
+			rj45.transform.position = new Vector3(x + offset, 0.015f, y);
 
-			if(i%2 == 0){
+			if (i % 2 == 0)
+			{
 				y += 0.0115f;
 				rj45.transform.rotation = Quaternion.Euler(rotation180);
 
-			} else {
+			}
+			else
+			{
 				y = 0;
 				x += 0.0115f;
 				rj45.transform.rotation = Quaternion.Euler(rotation0);
@@ -214,19 +207,21 @@ public class Holomin : MonoBehaviour
 		return localNetworkSwitch;
 	}
 
-	public void ZeroPositionAndRotation(GameObject obj){
-		obj.transform.SetPositionAndRotation(new Vector3(0f,0f,0f), new Quaternion(0f,0f,0f,0f));
+	public void ZeroPositionAndRotation(GameObject obj)
+	{
+		obj.transform.SetPositionAndRotation(new Vector3(0f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
 	}
 
-	 public static void ZeroPositionAndRotationParams(params GameObject[] list)
-    {
-        for (int i = 0; i < list.Length; i++)
-        {
-            list[i].transform.SetPositionAndRotation(new Vector3(0f,0f,0f), new Quaternion(0f,0f,0f,0f));
-        }
-    }
+	public static void ZeroPositionAndRotationParams(params GameObject[] list)
+	{
+		for (int i = 0; i < list.Length; i++)
+		{
+			list[i].transform.SetPositionAndRotation(new Vector3(0f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
+		}
+	}
 
-	public static void SetParentChild(GameObject parent, GameObject child) {
+	public static void SetParentChild(GameObject parent, GameObject child)
+	{
 		child.transform.parent = parent.transform;
 	}
 	// public JSONObject GenerateJSON(string content) {
