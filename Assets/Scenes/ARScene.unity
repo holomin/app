@@ -179,7 +179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228446218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
   m_Name: 
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228446218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
   m_Name: 
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228446218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
   m_Name: 
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228446218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
   m_Name: 
@@ -491,7 +491,7 @@ MonoBehaviour:
   onStabilizeFailure:
     m_PersistentCalls:
       m_Calls: []
-  maxScanResolution: 250000
+  maxScanResolution: 300000
   searchScanInterval: 0.5
   stabilizeScanInterval: 0
   refineScanInterval: 0
@@ -537,7 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Logger: {fileID: 1991142173}
-  MatRJ45: {fileID: 2100000, guid: 2f03cf9166b924032bc7e0a8d0518775, type: 2}
+  _materialRJ45: {fileID: 2100000, guid: 2c9c4fcad64084bfbaea93cd47d0ed03, type: 2}
+  _materialSFP: {fileID: 2100000, guid: 2f03cf9166b924032bc7e0a8d0518775, type: 2}
 --- !u!4 &1018084067
 Transform:
   m_ObjectHideFlags: 0
