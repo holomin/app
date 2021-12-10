@@ -21,7 +21,7 @@ public partial class Holomin : MonoBehaviour
 	private bool _isRegistered = false;
 	private bool _isSpawned = false;
 
-	public async void OnCodeDetected(string content)
+	public void OnCodeDetected(string content)
 	{
 		_isVisible = true;
 
@@ -69,6 +69,9 @@ public partial class Holomin : MonoBehaviour
 	void Start()
 	{
 		// Start is called before the first frame update
+		GetMacAddresses();
+		// InvokeRepeating("GetMacAddresses", 0.0f, 2.0f);
+		// InvokeRepeating("UpdateSwitchPorts", 1.0f, 2.0f);
 	}
 
 	void Update()
@@ -88,6 +91,7 @@ public partial class Holomin : MonoBehaviour
 			}
 		}
 
+		UpdateSwitchPorts();
 		// if (_localID != null)
 		// {
 		// 	StartCoroutine(GetData(_localID, SpawnSwitch));
@@ -99,11 +103,25 @@ public partial class Holomin : MonoBehaviour
 		if (_isSpawned == true && _referenceObj != null)
 		{
 			// reference = GameObject.FindGameObjectWithTag("Reference");
-			_switchObj.transform.SetPositionAndRotation(_referenceObj.transform.position, _referenceObj.transform.rotation);
-			// if (reference != null && _isSpawned == true)
-			// {
-			// 	_networkSwitch.transform.SetPositionAndRotation(reference.transform.position, reference.transform.rotation);
-			// }
+			// _switchObj.transform.SetPositionAndRotation(_referenceObj.transform.position, _referenceObj.transform.rotation);
+			if (_referenceObj != null && _isSpawned == true)
+			{
+				_switchObj.transform.SetPositionAndRotation(_referenceObj.transform.position, _referenceObj.transform.rotation);
+			}
+		}
+	}
+
+	public void UpdateSwitchPorts()
+	{
+		if (_isSpawned == true)
+		{
+			//List<Dictionary<string, string>> 
+			foreach (Dictionary<string, string> item in Devices)
+			{
+				string portname = "port" + item["port"];
+				GameObject port = GameObject.Find(portname);
+				port.GetComponent<Renderer>().material = _materialLAN_ON;
+			}
 		}
 	}
 }

@@ -537,7 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Logger: {fileID: 1991142173}
-  _materialRJ45: {fileID: 2100000, guid: 2c9c4fcad64084bfbaea93cd47d0ed03, type: 2}
+  _materialLAN_OFF: {fileID: 2100000, guid: 8310a1ded0ff94173a6899e4e60a18d8, type: 2}
+  _materialLAN_ON: {fileID: 2100000, guid: 061c6523f6041414fa31e70b7fb915e2, type: 2}
   _materialSFP: {fileID: 2100000, guid: 2f03cf9166b924032bc7e0a8d0518775, type: 2}
 --- !u!4 &1018084067
 Transform:
@@ -670,7 +671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1822199741
 MonoBehaviour:
   m_ObjectHideFlags: 0
