@@ -8,6 +8,8 @@ public partial class Holomin : MonoBehaviour
 	public Material _materialLAN_ON;
 	public Material _materialSFP;
 
+	private int portnumber = 1;
+
 	public static void ZeroPositionAndRotationParams(params GameObject[] list)
 	{
 		for (int i = 0; i < list.Length; i++)
@@ -21,7 +23,7 @@ public partial class Holomin : MonoBehaviour
 		child.transform.parent = parent.transform;
 	}
 
-	private void SpawnSwitch()
+	private void GenerateOverlay()
 	{
 		Vector3 scale2 = new Vector3(0.033f, 0.033f, 0.033f);
 		Vector3 scale3 = new Vector3(0.4826f, 0.04445f, 0.01f); //19" wide, 1U high, 1cm depth
@@ -43,7 +45,7 @@ public partial class Holomin : MonoBehaviour
 		//Reset
 		ZeroPositionAndRotationParams(localNetworkSwitch, PRS, cube);
 
-		int portnumber = 1;
+
 		foreach (Section s in _switchData.data.sections)
 		{
 			//CREATE SECTION
@@ -114,7 +116,6 @@ public partial class Holomin : MonoBehaviour
 						break;
 				}
 			}
-			Log(s.posY.ToString());
 			newSection.transform.position = new Vector3(s.posX, 0.003f, s.posY);
 		}
 

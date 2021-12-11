@@ -5,8 +5,12 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System.Threading;
 // using UnityEngine.JsonUtility;
 // using UnityEngine.GenerateSwitch;
+// using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+// Debug.WriteLine
 
 
 public partial class Holomin : MonoBehaviour
@@ -66,19 +70,32 @@ public partial class Holomin : MonoBehaviour
 		_isRegistered = false;
 	}
 
-	void Start()
+	void Start() // Start is called before the first frame update
 	{
-		// Start is called before the first frame update
-		GetMacAddresses();
-		// InvokeRepeating("GetMacAddresses", 0.0f, 2.0f);
-		// InvokeRepeating("UpdateSwitchPorts", 1.0f, 2.0f);
+		// thread = new Thread(this.GetMacAddresses);
+		// thread1 = new Thread(() => GetMacAddressesAsync(2f));
+		// thread1.Start();
+		// thread1.Abort();
+		// thread2 = new Thread(() => UpdateSwitchPortsAsync(2f));
+		// thread2.Start();
+		// UnityEngine.XR.ARSubsystems.CameraFocusMode
+		// GetMacAddresses();
+		// InvokeRepeating("GetMacAddresses", 0.0f, 5.0f);
+		// InvokeRepeating("UpdateSwitchPorts", 1.0f, 1.0f);
+
+		StartCoroutine(GetMacAddressesAsync(2f));
+		StartCoroutine(UpdateSwitchPortsAsync(2f));
 	}
 
-	void Update()
+	void Update() // Update is called once per frame
 	{
-		// Update is called once per frame
+		SpawnSwitch();
 		UpdateSwitchPosition();
+		// UpdateSwitchPorts(2f);
+	}
 
+	private void SpawnSwitch()
+	{
 		if (_newID != null)
 		{
 			//if new QR code is scanned, create new switch
@@ -86,19 +103,12 @@ public partial class Holomin : MonoBehaviour
 			{
 				_currentID = _newID;
 				_switchObj = null; //destroy old switchObj
-				StartCoroutine(GetData(_currentID, SpawnSwitch));
+				StartCoroutine(GetData(_currentID, GenerateOverlay));
 				// _newID = null;
 			}
 		}
-
-		UpdateSwitchPorts();
-		// if (_localID != null)
-		// {
-		// 	StartCoroutine(GetData(_localID, SpawnSwitch));
-		// 	_localID = null;
-		// }
 	}
-	public void UpdateSwitchPosition()
+	private void UpdateSwitchPosition()
 	{
 		if (_isSpawned == true && _referenceObj != null)
 		{
@@ -111,17 +121,64 @@ public partial class Holomin : MonoBehaviour
 		}
 	}
 
-	public void UpdateSwitchPorts()
+	private void UpdateSwitchPorts()
 	{
+		Log("UpdateSwitchPortsAsync");
 		if (_isSpawned == true)
 		{
-			//List<Dictionary<string, string>> 
-			foreach (Dictionary<string, string> item in Devices)
+			foreach (Dictionary<string, string> item in _SNMP)
 			{
 				string portname = "port" + item["port"];
 				GameObject port = GameObject.Find(portname);
 				port.GetComponent<Renderer>().material = _materialLAN_ON;
 			}
+		}
+
+	}
+
+	private IEnumerator UpdateSwitchPortsAsync(float seconds)
+	{
+		while (true)
+		{
+			if (_isSpawned == true && _SNMP != null)
+			{
+				Log("UpdateSwitchPortsAsync");
+				for (int i = 1; i <= portnumber; i++)
+				{
+
+
+				}
+
+
+				foreach (Dictionary<string, string> item in _SNMP)
+				{
+					Debug.Log(item["mac"] + "\n" + "on Port:" + item["port"]); // + " ip: " + ip
+					string portname = "port" + item["port"];
+					GameObject port = GameObject.Find(portname);
+					port.GetComponent<Renderer>().material = _materialLAN_ON;
+					// yield return new WaitForSeconds(0.032f);
+				}
+
+				// yield return new WaitForSeconds(10);
+			}
+			yield return new WaitForSeconds(seconds);
+		}
+	}
+
+	private IEnumerator GetMacAddressesAsync(float seconds)
+	{
+		while (true)
+		{
+			// Thread thread_mac = new Thread(GetMacAddresses);
+
+			// if (!thread_mac.IsAlive)
+			// {
+			// 	Log("Thread started");
+			// 	thread_mac.Start();
+			// }
+
+			GetMacAddresses();
+			yield return new WaitForSeconds(seconds);
 		}
 	}
 }

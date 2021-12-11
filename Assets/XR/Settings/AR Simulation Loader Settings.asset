@@ -16,12 +16,12 @@ MonoBehaviour:
   m_StartAndStopSubsystems: 1
   m_addXRLoader: 1
   m_autoSceneSetup: 1
-  m_autoPlane: 1
-  m_allowAutoPointCloud: 1
-  m_autoAnchor: 1
-  m_autoTrackedImage: 1
-  m_autoTrackedObject: 1
-  m_autoMeshing: 1
+  m_autoPlane: 0
+  m_allowAutoPointCloud: 0
+  m_autoAnchor: 0
+  m_autoTrackedImage: 0
+  m_autoTrackedObject: 0
+  m_autoMeshing: 0
   m_allowMarkEditorOnlyGameObjectsInHierarchy: 1
   m_inputSettings:
     DeactivateWithSubsystem: 1
@@ -36,5 +36,8 @@ MonoBehaviour:
     DefaultFocusDistance: 1.5
   m_allowAutoSetupLogging: 0
   foldoutEnvironmentManagerSettings: 1
-  prefabGuidsWithSimulatedEnvironmentComponent: []
+  prefabGuidsWithSimulatedEnvironmentComponent:
+  - 08b90dfff7196004280dc4f77b12ae16
+  - 836d38f29578e7b42bd6745d5d532a5e
+  - 4458de3ff7e890f4b9f38859bde4aad6
   simulatedEnvironmentSettings: []
