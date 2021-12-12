@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System;
+// using Newtonsoft.Json;
 
 public partial class Holomin : MonoBehaviour
 {
-	IEnumerator GetData(string id, System.Action callback)
+	private JsonAPI _switchData = new JsonAPI();
+	private RootObject _snmpData = new RootObject();
+
+	IEnumerator GetSwitch(string id, System.Action callback)
 	{
 		string uri = "https://api.holomin.app/" + id;
 
@@ -31,4 +36,32 @@ public partial class Holomin : MonoBehaviour
 			}
 		}
 	}
+
+	IEnumerator GetSNMP() //System.Action callback
+	{
+		// string uri = "http://localhost:5019/";
+		string uri = "http://192.168.1.245:5019/";
+
+		using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+		{
+			yield return webRequest.SendWebRequest();
+
+			switch (webRequest.result)
+			{
+				case UnityWebRequest.Result.ConnectionError:
+				case UnityWebRequest.Result.DataProcessingError:
+					Log("Error: " + webRequest.error);
+					break;
+				case UnityWebRequest.Result.ProtocolError:
+					Log("HTTP Error: " + webRequest.error);
+					break;
+				case UnityWebRequest.Result.Success:
+					// Debug.Log(webRequest.downloadHandler.text);
+					_snmpData = JsonUtility.FromJson<RootObject>(webRequest.downloadHandler.text);
+					// Debug.Log(_snmpData.time);
+					break;
+			}
+		}
+	}
 }
+

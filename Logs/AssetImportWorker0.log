@@ -1,0 +1,199 @@
+Unity Editor version:    2020.3.20f1 (41c4e627c95f)
+Branch:                  2020.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 11.6.1 (Build 20G224)
+Darwin version:          20.6.0
+Architecture:            x86_64
+Running under Rosetta:   NO
+Available memory:        16384 MB
+Using pre-set license
+Pro License: NO
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/andrei/howest/mct/mixedreality/holomin
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+63279
+Successfully changed project path to: /Users/andrei/howest/mct/mixedreality/holomin
+/Users/andrei/howest/mct/mixedreality/holomin
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 54.96 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.20f1 (41c4e627c95f)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/andrei/howest/mct/mixedreality/holomin/Assets
+GfxDevice: creating device client; threaded=0
+2021-12-12 15:41:39.769 Unity[37798:1338350] Color LCD preferred device: NVIDIA GeForce GT 750M (high power)
+2021-12-12 15:41:39.769 Unity[37798:1338350] Metal devices available: 2
+2021-12-12 15:41:39.769 Unity[37798:1338350] 0: NVIDIA GeForce GT 750M (high power)
+2021-12-12 15:41:39.769 Unity[37798:1338350] 1: Intel Iris Pro Graphics (low power)
+2021-12-12 15:41:39.770 Unity[37798:1338350] Using device NVIDIA GeForce GT 750M (high power)
+Initializing Metal device caps: NVIDIA GeForce GT 750M
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56798
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.20f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.002118 seconds.
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 49.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.191 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5192ms)
+		BeginReloadAssembly (61ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (658ms)
+			LoadAssemblies (62ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (282ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (50ms)
+			SetupLoadedEditorAssemblies (248ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (49ms)
+				BeforeProcessingInitializeOnLoad (13ms)
+				ProcessInitializeOnLoadAttributes (139ms)
+				ProcessInitializeOnLoadMethodAttributes (40ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.005821 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 56.23 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+UnityEditor.Android.Extensions assembly not found, android logcat will be disabled.
+UnityEngine.StackTraceUtility:ExtractStackTrace () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/StackTrace.cs:37)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Unity.Android.Logcat.AndroidBridge:get_AndroidExtensions () (at Library/PackageCache/com.unity.mobile.android-logcat@1.2.3/Editor/AndroidTools/AndroidBridge.cs:50)
+Unity.Android.Logcat.AndroidBridge:get_AndroidExtensionsInstalled () (at Library/PackageCache/com.unity.mobile.android-logcat@1.2.3/Editor/AndroidTools/AndroidBridge.cs:57)
+Unity.Android.Logcat.AndroidLogcatProjectSettingsProvider:CreateAndroidLogcatProjectSettingsProvider () (at Library/PackageCache/com.unity.mobile.android-logcat@1.2.3/Editor/AndroidLogcatProjectSettingsProvider.cs:31)
+UnityEditor.SettingsService/<>c:<FetchSettingProviderFromAttribute>b__16_0 (UnityEditor.AttributeHelper/MethodWithAttribute) (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsService.cs:112)
+System.Linq.Enumerable/SelectListIterator`2<UnityEditor.AttributeHelper/MethodWithAttribute, UnityEditor.SettingsProvider>:MoveNext ()
+System.Linq.Enumerable/ConcatIterator`1<UnityEditor.SettingsProvider>:MoveNext ()
+System.Linq.Enumerable/WhereEnumerableIterator`1<UnityEditor.SettingsProvider>:ToArray ()
+System.Linq.Enumerable:ToArray<UnityEditor.SettingsProvider> (System.Collections.Generic.IEnumerable`1<UnityEditor.SettingsProvider>)
+UnityEditor.SettingsService:FetchSettingsProviders () (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsService.cs:48)
+UnityEditor.SettingsWindow:Init () (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsWindow.cs:207)
+UnityEditor.SettingsWindow:OnEnable () (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsWindow.cs:104)
+UnityEngine.ScriptableObject:CreateInstance (System.Type) (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/ScriptableObject.bindings.cs:34)
+UnityEngine.ScriptableObject:CreateInstance<UnityEditor.ProjectSettingsWindow> () (at /Users/bokken/buildslave/unity/build/Runtime/Export/Scripting/ScriptableObject.bindings.cs:40)
+UnityEditor.SettingsWindow:Create (UnityEditor.SettingsScope) (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsWindow.cs:459)
+UnityEditor.SettingsWindow:Show (UnityEditor.SettingsScope,string) (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsWindow.cs:466)
+UnityEditor.SettingsService:OpenProjectSettings (string) (at /Users/bokken/buildslave/unity/build/Editor/Mono/Settings/SettingsService.cs:17)
+Needle.XR.ARSimulation.ARSimulationXRLoaderSetup:EnsureXRLoaderEnabled () (at Library/PackageCache/com.needle.xr.arsimulation@1.3.2-pre.1/Editor/ARSimulationXRLoaderSetup.cs:90)
+Needle.XR.ARSimulation.ARSimulationXRLoaderSetup:Init () (at Library/PackageCache/com.needle.xr.arsimulation@1.3.2-pre.1/Editor/ARSimulationXRLoaderSetup.cs:42)
+System.Reflection.MonoMethod:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
+System.Reflection.MethodBase:Invoke (object,object[])
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes () (at /Users/bokken/buildslave/unity/build/Editor/Mono/EditorAssemblies.cs:154)
+
+(Filename: Library/PackageCache/com.unity.mobile.android-logcat@1.2.3/Editor/AndroidTools/AndroidBridge.cs Line: 50)
+
+Loading style catalogs (6)
+	StyleSheets/Extensions/base/common.uss
+	UIPackageResources/StyleSheets/Default/Variables/Public/common.uss
+	StyleSheets/Northstar/common.uss
+	StyleSheets/Extensions/fonts/inter.uss
+	StyleSheets/Extensions/base/dark.uss
+	UIPackageResources/StyleSheets/Default/Northstar/Palette/dark.uss
+2021-12-12 15:41:48.617 Unity[37798:1338350] CAMetalLayer ignoring invalid setDrawableSize width=0.000000 height=0.000000
+2021-12-12 15:41:48.671 Unity[37798:1338350] CAMetalLayer ignoring invalid setDrawableSize width=0.000000 height=0.000000
+Mono: successfully reloaded assembly
+- Completed reload, in  2.603 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2607ms)
+		BeginReloadAssembly (203ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (39ms)
+		EndReloadAssembly (2326ms)
+			LoadAssemblies (129ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (429ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (74ms)
+			SetupLoadedEditorAssemblies (1481ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (56ms)
+				BeforeProcessingInitializeOnLoad (103ms)
+				ProcessInitializeOnLoadAttributes (290ms)
+				ProcessInitializeOnLoadMethodAttributes (1021ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (14ms)
+Platform modules already initialized, skipping
+Validating Project structure ... 0.015723 seconds.
+Shader import version has changed; will reimport all shaders...
+Upgrading shader files ...0.011885 seconds.
+Application.AssetDatabase Initial Script Refresh Start
+RefreshInfo: InitialScriptRefreshV2(NoUpdateAssetOptions) scanfilter:  ... 1 filters
+RefreshProfiler: Total: 0.000ms
+Application.AssetDatabase Initial Script Refresh End
+Application.AssetDatabase.Refresh Start
+Application.AssetDatabase.Refresh End
+RefreshInfo: StopAssetImportingV2(ForceSynchronousImport) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Launching external process: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
+Initializing Unity extensions:
+========================================================================
+Worker process is ready to serve import requests
+Refreshing native plugins compatible for Editor in 0.50 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2029 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 200.7 MB.
+System memory in use after: 199.8 MB.
+
+Unloading 158 unused Assets to reduce memory usage. Loaded Objects now: 2529.
+Total: 10.222519 ms (FindLiveObjects: 0.236078 ms CreateObjectMapping: 0.078548 ms MarkObjects: 8.579143 ms  DeleteObjects: 1.326979 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Textures/button_circle.png
+  artifactKey: Guid(1e4600d17854a4d348853521e79644e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Textures/button_circle.png using Guid(1e4600d17854a4d348853521e79644e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a18f58a241bd3eeb8e37ecb257fa4e7') in 1.231713 seconds 
+  Import took 1.239060 seconds .
+

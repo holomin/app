@@ -1,31 +1,13 @@
 {
     "m_SelectedDeviceId": "711KPKN0637685",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "711KPKN0637685",
+        "name": "io.lavrenov.holomin",
+        "processId": 16047,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 29131,
-            "exited": true
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 30449,
-            "exited": true
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 30660,
-            "exited": true
-        },
         {
             "deviceId": "711KPKN0637685",
             "name": "com.google.android.apps.nexuslauncher",
@@ -34,15 +16,45 @@
         },
         {
             "deviceId": "711KPKN0637685",
-            "name": "com.facebook.orca",
-            "processId": 8798,
+            "name": "io.lavrenov.holomin",
+            "processId": 5104,
             "exited": true
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 23993,
+            "processId": 5730,
             "exited": true
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 5954,
+            "exited": true
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 10271,
+            "exited": true
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 14979,
+            "exited": true
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 15719,
+            "exited": false
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 16047,
+            "exited": false
         }
     ],
     "m_Tags": {

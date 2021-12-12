@@ -15,9 +15,13 @@ using Debug = UnityEngine.Debug;
 
 public partial class Holomin : MonoBehaviour
 {
+	[SerializeField] private Animator _focusBrackets;
+	// [SerializeField] private string
+
 	private GameObject _switchObj = null; //network switch to ge generated.
 	private GameObject _referenceObj = null;
-	private JsonAPI _switchData = new JsonAPI();
+
+	private List<string> _activePorts = new List<string>();
 	private string _newID = null;
 	private string _currentID = null;
 
@@ -32,9 +36,15 @@ public partial class Holomin : MonoBehaviour
 		try
 		{
 			_newID = JsonUtility.FromJson<JsonQR>(content).id;
+			// _focusBrackets.Play("CorrectQRCode", 0, 0.0f);
+			_focusBrackets.SetTrigger("triggerCorrect");
+			_focusBrackets.SetTrigger("triggerIdle");
 		}
 		catch (System.Exception)
 		{
+			// _focusBrackets.Play("WrongQRCode", 0, 0.0f);
+			_focusBrackets.SetTrigger("triggerWrong");
+			_focusBrackets.SetTrigger("triggerIdle");
 			Log("This QR Code is not part of the Holomin ecosystem.");
 		}
 
@@ -50,8 +60,8 @@ public partial class Holomin : MonoBehaviour
 
 	public void OnCodeRegistered(string content, GameObject reference)
 	{
-		_isRegistered = true;
 		_referenceObj = reference;
+		_isRegistered = true;
 		//Show in UI that everything is good2go
 		// if (NetworkSwitch)
 		// {
@@ -68,6 +78,7 @@ public partial class Holomin : MonoBehaviour
 	{
 		_isVisible = false;
 		_isRegistered = false;
+		_referenceObj = null;
 	}
 
 	void Start() // Start is called before the first frame update
@@ -83,7 +94,8 @@ public partial class Holomin : MonoBehaviour
 		// InvokeRepeating("GetMacAddresses", 0.0f, 5.0f);
 		// InvokeRepeating("UpdateSwitchPorts", 1.0f, 1.0f);
 
-		StartCoroutine(GetMacAddressesAsync(2f));
+		// StartCoroutine(GetMacAddressesAsync(2f));
+		StartCoroutine(GetSnmpDataAsync(2f));
 		StartCoroutine(UpdateSwitchPortsAsync(2f));
 	}
 
@@ -96,88 +108,63 @@ public partial class Holomin : MonoBehaviour
 
 	private void SpawnSwitch()
 	{
-		if (_newID != null)
+		if (_newID != null) //if there is a _newID
 		{
-			//if new QR code is scanned, create new switch
-			if (_currentID != _newID)
-			{
+			if (_currentID != _newID) //if the currentID is different from newID
+			{                         //works both for app start when no currentID yet, and when scanning new QR code)
 				_currentID = _newID;
-				_switchObj = null; //destroy old switchObj
-				StartCoroutine(GetData(_currentID, GenerateOverlay));
-				// _newID = null;
+				Destroy(_switchObj);
+				StartCoroutine(GetSwitch(_currentID, GenerateOverlay));
 			}
 		}
 	}
+
 	private void UpdateSwitchPosition()
 	{
-		if (_isSpawned == true && _referenceObj != null)
+		if (_referenceObj != null && _isSpawned == true)
 		{
-			// reference = GameObject.FindGameObjectWithTag("Reference");
-			// _switchObj.transform.SetPositionAndRotation(_referenceObj.transform.position, _referenceObj.transform.rotation);
-			if (_referenceObj != null && _isSpawned == true)
-			{
-				_switchObj.transform.SetPositionAndRotation(_referenceObj.transform.position, _referenceObj.transform.rotation);
-			}
+			_switchObj.transform.SetPositionAndRotation(_referenceObj.transform.position, _referenceObj.transform.rotation);
 		}
 	}
-
-	private void UpdateSwitchPorts()
-	{
-		Log("UpdateSwitchPortsAsync");
-		if (_isSpawned == true)
-		{
-			foreach (Dictionary<string, string> item in _SNMP)
-			{
-				string portname = "port" + item["port"];
-				GameObject port = GameObject.Find(portname);
-				port.GetComponent<Renderer>().material = _materialLAN_ON;
-			}
-		}
-
-	}
-
 	private IEnumerator UpdateSwitchPortsAsync(float seconds)
 	{
 		while (true)
 		{
-			if (_isSpawned == true && _SNMP != null)
+			if (_isSpawned == true && _snmpData != null)
 			{
-				Log("UpdateSwitchPortsAsync");
 				for (int i = 1; i <= portnumber; i++)
 				{
+					string key = "port" + i;
+					GameObject port = GameObject.Find(key);
+					if (port)
+					{
+						if (_snmpData.data.FindIndex(item => item.port == i) != -1)
+						{
+							port.GetComponent<Renderer>().material = _materialLAN_ON;
+						}
+						else
+						{
+							port.GetComponent<Renderer>().material = _materialLAN_OFF;
+						}
+					}
 
 
 				}
-
-
-				foreach (Dictionary<string, string> item in _SNMP)
-				{
-					Debug.Log(item["mac"] + "\n" + "on Port:" + item["port"]); // + " ip: " + ip
-					string portname = "port" + item["port"];
-					GameObject port = GameObject.Find(portname);
-					port.GetComponent<Renderer>().material = _materialLAN_ON;
-					// yield return new WaitForSeconds(0.032f);
-				}
-
-				// yield return new WaitForSeconds(10);
 			}
+
 			yield return new WaitForSeconds(seconds);
 		}
 	}
 
-	private IEnumerator GetMacAddressesAsync(float seconds)
+	private IEnumerator GetSnmpDataAsync(float seconds)
 	{
 		while (true)
 		{
-			// Thread thread_mac = new Thread(GetMacAddresses);
-
-			// if (!thread_mac.IsAlive)
+			StartCoroutine(GetSNMP());
+			// foreach (var item in _snmpData.data)
 			// {
-			// 	Log("Thread started");
-			// 	thread_mac.Start();
+			// 	Debug.Log(item.port + " | " + item.mac);
 			// }
-
-			GetMacAddresses();
 			yield return new WaitForSeconds(seconds);
 		}
 	}
