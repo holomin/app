@@ -36,26 +36,15 @@ public partial class Holomin : MonoBehaviour
 		try
 		{
 			_newID = JsonUtility.FromJson<JsonQR>(content).id;
-			// _focusBrackets.Play("CorrectQRCode", 0, 0.0f);
-			_focusBrackets.SetTrigger("triggerCorrect");
-			_focusBrackets.SetTrigger("triggerIdle");
+			if (_newID != null)
+			{
+				_focusBrackets.SetTrigger("triggerCorrect");
+			}
 		}
 		catch (System.Exception)
 		{
-			// _focusBrackets.Play("WrongQRCode", 0, 0.0f);
 			_focusBrackets.SetTrigger("triggerWrong");
-			_focusBrackets.SetTrigger("triggerIdle");
-			Log("This QR Code is not part of the Holomin ecosystem.");
 		}
-
-		//TODO
-		// Show UI change that QR code it there.
-		// Show/Update stability level in Text (debug) color (final)
-		//TODO
-		//Parse ID from QR Code (Convert to Json)
-		//if localID is not set, set.
-		//Get & Parse JSON Switch Data by using ID
-		//if localID is set, do nothing.
 	}
 
 	public void OnCodeRegistered(string content, GameObject reference)
@@ -78,7 +67,8 @@ public partial class Holomin : MonoBehaviour
 	{
 		_isVisible = false;
 		_isRegistered = false;
-		_referenceObj = null;
+		Destroy(_referenceObj);
+		// _referenceObj = null;
 	}
 
 	void Start() // Start is called before the first frame update
@@ -110,6 +100,8 @@ public partial class Holomin : MonoBehaviour
 	{
 		if (_newID != null) //if there is a _newID
 		{
+			// yield return new WaitForSeconds(2f);
+
 			if (_currentID != _newID) //if the currentID is different from newID
 			{                         //works both for app start when no currentID yet, and when scanning new QR code)
 				_currentID = _newID;

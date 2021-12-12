@@ -4,9 +4,11 @@ using UnityEngine;
 
 public partial class Holomin : MonoBehaviour
 {
+	public Material _materialSwitch;
 	public Material _materialLAN_OFF;
 	public Material _materialLAN_ON;
 	public Material _materialSFP;
+
 
 	private int portnumber = 1;
 
@@ -40,7 +42,8 @@ public partial class Holomin : MonoBehaviour
 		GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		SetParentChild(PRS, cube);
 		cube.name = "SwitchBody";
-		cube.transform.localScale = new Vector3(_switchData.data.layout.width, 0.005f, _switchData.data.layout.height);
+		cube.transform.localScale = new Vector3(_switchData.data.layout.width, 0f, _switchData.data.layout.height);
+		cube.GetComponent<Renderer>().material = _materialSwitch;
 
 		//Reset
 		ZeroPositionAndRotationParams(localNetworkSwitch, PRS, cube);

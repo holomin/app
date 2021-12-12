@@ -29,6 +29,7 @@ public partial class Holomin : MonoBehaviour
 					break;
 				case UnityWebRequest.Result.Success:
 					// Log("Received: \n" + webRequest.downloadHandler.text);
+					yield return new WaitForSeconds(2f);
 					_switchData = JsonUtility.FromJson<JsonAPI>(webRequest.downloadHandler.text);
 					// Log(localDATA.data.brand);
 					callback();
@@ -50,10 +51,10 @@ public partial class Holomin : MonoBehaviour
 			{
 				case UnityWebRequest.Result.ConnectionError:
 				case UnityWebRequest.Result.DataProcessingError:
-					Log("Error: " + webRequest.error);
+					Debug.Log("Error: " + webRequest.error);
 					break;
 				case UnityWebRequest.Result.ProtocolError:
-					Log("HTTP Error: " + webRequest.error);
+					Debug.Log("HTTP Error: " + webRequest.error);
 					break;
 				case UnityWebRequest.Result.Success:
 					// Debug.Log(webRequest.downloadHandler.text);
