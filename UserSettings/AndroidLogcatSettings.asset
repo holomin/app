@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "711KPKN0637685",
         "name": "io.lavrenov.holomin",
-        "processId": 26481,
+        "processId": 29406,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -78,6 +78,24 @@
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
             "processId": 26481,
+            "exited": false
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 27816,
+            "exited": false
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 28787,
+            "exited": false
+        },
+        {
+            "deviceId": "711KPKN0637685",
+            "name": "io.lavrenov.holomin",
+            "processId": 29406,
             "exited": false
         }
     ],
