@@ -12,11 +12,13 @@ public partial class Holomin : MonoBehaviour
 
 	private int portnumber = 1;
 
-	public static void ZeroPositionAndRotationParams(params GameObject[] list)
+	public static void ZeroPRSParams(params GameObject[] list)
 	{
 		for (int i = 0; i < list.Length; i++)
 		{
-			list[i].transform.SetPositionAndRotation(new Vector3(0f, 0f, 0f), new Quaternion(0f, 0f, 0f, 0f));
+			list[i].transform.localPosition = new Vector3(0f, 0f, 0f);
+			list[i].transform.localRotation = new Quaternion(0f, 0f, 0f, 0f);
+			list[i].transform.localScale = new Vector3(1f, 1f, 1f);
 		}
 	}
 
@@ -34,12 +36,16 @@ public partial class Holomin : MonoBehaviour
 
 		// CREATE MAIN OBJECT & PRS
 		GameObject localNetworkSwitch = new GameObject(_switchData.data.brand + " " + _switchData.data.model); //empty parent gameobject.
+		ZeroPRSParams(localNetworkSwitch);                                                                                         // ZeroPRSParams(localNetworkSwitch);
+
 		GameObject PRS = new GameObject("PosRotScale"); // Position, Rotation, Scale
+		ZeroPRSParams(PRS);
 		PRS.transform.localScale = new Vector3(1, 1, 1);
 		SetParentChild(localNetworkSwitch, PRS);
 
 		// CREATE SWITCH BODY
 		GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+		ZeroPRSParams(cube);
 		SetParentChild(PRS, cube);
 		cube.name = "SwitchBody";
 		cube.transform.localScale = new Vector3(_switchData.data.layout.width, 0.01f, _switchData.data.layout.height);
@@ -52,13 +58,14 @@ public partial class Holomin : MonoBehaviour
 		outline.OutlineWidth = 10f;
 
 		//Reset
-		ZeroPositionAndRotationParams(localNetworkSwitch, PRS, cube);
+
 
 
 		foreach (Section s in _switchData.data.sections)
 		{
 			//CREATE SECTION
 			GameObject newSection = new GameObject("section" + s.id.ToString());
+			ZeroPRSParams(newSection);
 			SetParentChild(PRS, newSection);
 
 			Vector3 rotation0 = new Vector3(0, 0, 0);
@@ -74,10 +81,14 @@ public partial class Holomin : MonoBehaviour
 
 			for (int i = 0; i < s.ports; i++)
 			{
-				GameObject info = GameObject.CreatePrimitive(PrimitiveType.Cube);
-				Text mac = new Text();
+
+
 				GameObject port = GameObject.CreatePrimitive(PrimitiveType.Cube);
+				ZeroPRSParams(port);
 				SetParentChild(newSection, port);
+
+
+
 				port.name = $"port{portnumber}";
 				portnumber++;
 
@@ -96,8 +107,8 @@ public partial class Holomin : MonoBehaviour
 				}
 
 				port.transform.localScale = size; //size of an RJ45 port
-				port.transform.position = new Vector3(posX, 0f, posY);
-				port.transform.RotateAround(port.transform.position, port.transform.up, rotate);
+				port.transform.localPosition = new Vector3(posX, 0f, posY);
+				port.transform.RotateAround(port.transform.localPosition, port.transform.up, rotate);
 
 				switch (s.order)
 				{
@@ -131,10 +142,10 @@ public partial class Holomin : MonoBehaviour
 
 
 
-			newSection.transform.position = new Vector3(s.posX, 0.011f, s.posY);
+			newSection.transform.localPosition = new Vector3(s.posX, 0.011f, s.posY);
 		}
 
-		PRS.transform.position = new Vector3(_switchData.data.layout.qrCodeOffset, 0f, 0); //-0.1813f
+		PRS.transform.localPosition = new Vector3(_switchData.data.layout.qrCodeOffset, 0f, 0); //-0.1813f
 
 		_switchObj = localNetworkSwitch;
 		_isSpawned = true;

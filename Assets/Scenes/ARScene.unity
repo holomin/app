@@ -1065,10 +1065,10 @@ MonoBehaviour:
   searchScanInterval: 0.5
   stabilizeScanInterval: 0
   refineScanInterval: 0
-  codeLossTimeout: 3
+  codeLossTimeout: 0.4
   truncateTimeout: Infinity
-  debugMode: 1
-  requiredPrecision: 1.2
+  debugMode: 0
+  requiredPrecision: 1.1
   debugMaterial: {fileID: 0}
   showLifecycleEvents: 1
   showAdvanedSettings: 1
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 1032469622}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032469617}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -1195,7 +1195,7 @@ Canvas:
   m_GameObject: {fileID: 1032469617}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 988373254}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
@@ -1205,7 +1205,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1032469621
 RectTransform:
@@ -2008,8 +2008,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -320.85413, y: -953.82574}
-  m_SizeDelta: {x: 477.9637, y: 1805.0044}
+  m_AnchoredPosition: {x: -445.2, y: -953.82574}
+  m_SizeDelta: {x: 726.6, y: 1805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991142173
 MonoBehaviour:
@@ -2024,7 +2024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.31764707, g: 0.72156864, b: 0.98039216, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2032,11 +2032,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
+    m_Font: {fileID: 12800000, guid: 2297be57b9329482485ea6bb7341def7, type: 3}
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 24
+    m_MinSize: 4
     m_MaxSize: 42
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2044,9 +2044,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Log:
-
-'
+  m_Text: 
 --- !u!222 &1991142174
 CanvasRenderer:
   m_ObjectHideFlags: 0

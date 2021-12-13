@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public partial class Holomin : MonoBehaviour
 {
 	public Text Logger;
-	public void Log(string message)
+	public void Log(string message = "")
 	{
 		int numLines = Logger.text.Split('\n').Length;
 		if (numLines > 40)
@@ -24,5 +24,10 @@ public partial class Holomin : MonoBehaviour
 		{
 			Logger.text += message + "\r\n";
 		}
+	}
+
+	public void ClearLog()
+	{
+		Logger.text = "";
 	}
 }

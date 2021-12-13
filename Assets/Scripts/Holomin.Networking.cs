@@ -29,7 +29,7 @@ public partial class Holomin : MonoBehaviour
 					break;
 				case UnityWebRequest.Result.Success:
 					// Log("Received: \n" + webRequest.downloadHandler.text);
-					yield return new WaitForSeconds(2f);
+					yield return new WaitForSeconds(1.5f);
 					_switchData = JsonUtility.FromJson<JsonAPI>(webRequest.downloadHandler.text);
 					// Log(localDATA.data.brand);
 					callback();

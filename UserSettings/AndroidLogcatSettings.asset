@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "711KPKN0637685",
         "name": "io.lavrenov.holomin",
-        "processId": 29406,
+        "processId": 19793,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -17,85 +17,49 @@
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 9894,
+            "processId": 5848,
             "exited": true
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 14525,
+            "processId": 7014,
             "exited": true
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 20855,
+            "processId": 7981,
             "exited": true
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 22966,
+            "processId": 10143,
             "exited": true
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 23376,
+            "processId": 17080,
             "exited": true
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 24016,
+            "processId": 18014,
             "exited": false
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 24361,
+            "processId": 19271,
             "exited": false
         },
         {
             "deviceId": "711KPKN0637685",
             "name": "io.lavrenov.holomin",
-            "processId": 24836,
-            "exited": false
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 25331,
-            "exited": false
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 25988,
-            "exited": false
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 26481,
-            "exited": false
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 27816,
-            "exited": false
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 28787,
-            "exited": false
-        },
-        {
-            "deviceId": "711KPKN0637685",
-            "name": "io.lavrenov.holomin",
-            "processId": 29406,
+            "processId": 19793,
             "exited": false
         }
     ],

@@ -11,6 +11,7 @@ using System.Threading;
 // using System.Diagnostics;
 using Debug = UnityEngine.Debug;
 // Debug.WriteLine
+using TMPro;
 
 
 public partial class Holomin : MonoBehaviour
@@ -86,7 +87,7 @@ public partial class Holomin : MonoBehaviour
 
 		// StartCoroutine(GetMacAddressesAsync(2f));
 		StartCoroutine(GetSnmpDataAsync(2f));
-		StartCoroutine(UpdateSwitchPortsAsync(2f));
+		StartCoroutine(UpdateSwitchPortsAsync(3f));
 	}
 
 	void Update() // Update is called once per frame
@@ -124,19 +125,62 @@ public partial class Holomin : MonoBehaviour
 		{
 			if (_isSpawned == true && _snmpData != null)
 			{
+				// ClearLog();
+
+				int listCounter = 0;
+
 				for (int i = 1; i <= portnumber; i++)
 				{
 					string key = "port" + i;
 					GameObject port = GameObject.Find(key);
+
 					if (port)
 					{
+						int ts = port.transform.childCount;
+
 						if (_snmpData.data.FindIndex(item => item.port == i) != -1)
 						{
 							port.GetComponent<Renderer>().material = _materialLAN_ON;
+
+							// Log("Port:" + _snmpData.data[listCounter].port);
+							// Log("Mac: " + _snmpData.data[listCounter].mac);
+							// Log("IP: " + _snmpData.data[listCounter].ip);
+							// Log("Host: " + _snmpData.data[listCounter].hostname);
+							// Log("");
+
+							if (ts == 0)
+							{
+								GameObject description = new GameObject("description" + i);
+								ZeroPRSParams(description);
+								SetParentChild(port, description);
+								// Debug.Log(description.transform);
+								description.AddComponent<TextMesh>();
+
+
+								var text = description.GetComponent<TextMesh>();
+								text.text = _snmpData.data[listCounter].hostname + "\n" + _snmpData.data[listCounter].ip;
+								text.characterSize = 0.3f;
+
+								Vector3 rotationVector = new Vector3(90, 0, 270);
+								Quaternion rotation = Quaternion.Euler(rotationVector);
+								Vector3 position = new Vector3(0.5f, 0f, -1f);
+								description.transform.localPosition = position;
+								description.transform.localRotation = rotation;
+								description.transform.localScale = new Vector3(1f, 1f, 1f);
+							}
+							listCounter++;
+
 						}
 						else
 						{
 							port.GetComponent<Renderer>().material = _materialLAN_OFF;
+							if (ts != 0)
+							{
+								foreach (Transform child in port.transform)
+								{
+									Destroy(child.gameObject);
+								}
+							}
 						}
 					}
 
